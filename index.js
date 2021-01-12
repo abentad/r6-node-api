@@ -1,5 +1,5 @@
 import express from "express";
-import { getData } from "./fetcher.js";
+import { getData, getDetailedData } from "./fetcher.js";
 
 const app = express();
 
@@ -14,8 +14,9 @@ app.get("/api/v1", (req, res) => {
 app.get("/api/v1/:plName", async (req, res) => {
   const { plName } = req.params;
   const plInfo = await getData(plName);
+  const plDetailedInfo = await getDetailedData(plName);
 
-  res.json(plInfo);
+  res.json({ plInfo, plDetailedInfo });
 });
 
 const port = process.env.port || 3000;
