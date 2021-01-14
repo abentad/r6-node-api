@@ -1,5 +1,7 @@
 import express from "express";
-import { getData, getDetailedData } from "./fetcher.js";
+import { getDetailedData } from "./fetcher.js";
+import cheerio from "cheerio";
+import fetch from "node-fetch";
 
 const app = express();
 
@@ -13,10 +15,7 @@ app.get("/api/v1", (req, res) => {
 
 app.get("/api/v1/:plName", async (req, res) => {
   const { plName } = req.params;
-  const plInfo = await getData(plName);
-  const plDetailedInfo = await getDetailedData(plName);
-
-  res.json({ plInfo, plDetailedInfo });
+  res.json(await getDetailedData(plName));
 });
 
 const port = process.env.port || 3000;

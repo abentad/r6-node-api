@@ -86,52 +86,17 @@ export async function getDetailedData(name) {
     .toString()
     .trim();
 
-  const plDetailedInfo = {
-    plTotalPlayTime,
-    plTotalMatchesPlayed,
-    plTotalWins,
-    plTotalLosses,
-    plTotalKills,
-    plTotalDeaths,
-    plTotalKD,
-    plRankedPlayTime,
-    plCasualPlayTime,
-    plTotalKillAssists,
-    plTotalRevives,
-  };
-  return plDetailedInfo;
-}
-
-//
-// export async function getOperatorData(name) {
-//   const url = `https://r6.tracker.network/profile/pc/${name}/operators`;
-//   const response = await fetch(url);
-//   const body = await response.text();
-//   const $ = cheerio.load(body);
-
-//   //
-//   const plTopAtacker = $(
-//     "#operators-Attackers > tbody > tr:nth-child(1) > td:nth-child(1) > img"
-//   )
-//     .text()
-//     .toString()
-//     .trim();
-
-//   const plOperatorInfo = {
-//     plTopAtacker,
-//   };
-//   return plOperatorInfo;
-// }
-
-//
-export async function getData(name) {
-  const url = `https://r6.tracker.network/profile/pc/${name}`;
-  const response = await fetch(url);
-  const body = await response.text();
-  const $ = cheerio.load(body);
+  //
+  //
+  //
+  //
+  const nurl = `https://r6.tracker.network/profile/pc/${name}`;
+  const nresponse = await fetch(nurl);
+  const nbody = await nresponse.text();
+  const n$ = cheerio.load(nbody);
 
   //works
-  const plName = $(
+  const playerName = n$(
     "#profile > div.trn-profile-header.trn-card > div > h1 > span:nth-child(1)"
   )
     .text()
@@ -153,7 +118,7 @@ export async function getData(name) {
   //   .toString()
   //   .trim();
   //works
-  const plRankedKd = $(
+  const plRankedKd = n$(
     "#profile > div.trn-scont.trn-scont--swap > div.trn-scont__content > div.r6-pvp-grid > div:nth-child(1) > div.trn-card__content > div > div:nth-child(8) > div.trn-defstat__value"
   )
     .text()
@@ -161,14 +126,14 @@ export async function getData(name) {
     .trim();
 
   //works
-  const plRankedDeaths = $(
+  const plRankedDeaths = n$(
     "#profile > div.trn-scont.trn-scont--swap > div.trn-scont__content > div.r6-pvp-grid > div:nth-child(1) > div.trn-card__content > div > div:nth-child(5) > div.trn-defstat__value"
   )
     .text()
     .toString()
     .trim();
   //works
-  const plRankedKills = $(
+  const plRankedKills = n$(
     "#profile > div.trn-scont.trn-scont--swap > div.trn-scont__content > div.r6-pvp-grid > div:nth-child(1) > div.trn-card__content > div > div:nth-child(6) > div.trn-defstat__value"
   )
     .text()
@@ -176,28 +141,28 @@ export async function getData(name) {
     .trim();
 
   //works
-  const plRankedMatches = $(
+  const plRankedMatches = n$(
     "#profile > div.trn-scont.trn-scont--swap > div.trn-scont__content > div.r6-pvp-grid > div:nth-child(1) > div.trn-card__content > div > div:nth-child(4) > div.trn-defstat__value"
   )
     .text()
     .toString()
     .trim();
   //works
-  const plRankedWins = $(
+  const plRankedWins = n$(
     "#profile > div.trn-scont.trn-scont--swap > div.trn-scont__content > div.r6-pvp-grid > div:nth-child(1) > div.trn-card__content > div > div:nth-child(2) > div.trn-defstat__value"
   )
     .text()
     .toString()
     .trim();
   //works
-  const plRankedLosses = $(
+  const plRankedLosses = n$(
     "#profile > div.trn-scont.trn-scont--swap > div.trn-scont__content > div.r6-pvp-grid > div:nth-child(1) > div.trn-card__content > div > div:nth-child(3) > div.trn-defstat__value"
   )
     .text()
     .toString()
     .trim();
   //works
-  const plRankText = $(
+  const plRankText = n$(
     "#profile > div.trn-scont.trn-scont--swap > div.trn-scont__aside > div:nth-child(1) > div.trn-card__content.trn-card--light.pt8.pb8 > div > div:nth-child(2) > div > div:nth-child(1)"
   )
     .text()
@@ -211,25 +176,25 @@ export async function getData(name) {
   //   .toString()
   //   .trim();
   //works
-  const plThisSeasonRankedMmr = $(
+  const plThisSeasonRankedMmr = n$(
     "#profile > div.trn-scont.trn-scont--swap > div.trn-scont__aside > div:nth-child(1) > div.trn-card__content.trn-card--light.pt8.pb8 > div > div:nth-child(2) > div > div.trn-text--dimmed"
   )
     .text()
     .toString()
     .trim();
   //works
-  const plThisSeasonRankedKd = $(
+  const plThisSeasonRankedKd = n$(
     "#profile > div.trn-scont.trn-scont--swap > div.trn-scont__aside > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > span:nth-child(2)"
   )
     .text()
     .toString()
     .trim();
   //works
-  const plProfilePic = $(
+  const plProfilePic = n$(
     "#profile > div.trn-profile-header.trn-card > div > div.trn-profile-header__avatar.trn-roundavatar.trn-roundavatar--white > img"
   ).attr("src");
   //works
-  const plRankPic = $(
+  const plRankPic = n$(
     "#profile > div.trn-scont.trn-scont--swap > div.trn-scont__aside > div:nth-child(1) > div.trn-card__content.trn-card--light.pt8.pb8 > div > div:nth-child(1) > img"
   ).attr("src");
   //doesnot work
@@ -242,19 +207,31 @@ export async function getData(name) {
   //   plTopOps.push(image);
   // });
 
-  const plInfo = {
-    plName,
-    plRankedKd,
-    plRankedDeaths,
-    plRankedKills,
-    plRankedMatches,
-    plRankedWins,
-    plRankedLosses,
-    plRankText,
-    plThisSeasonRankedMmr,
-    plThisSeasonRankedKd,
-    plProfilePic,
-    plRankPic,
-  };
-  return plInfo;
+  return [
+    {
+      playerName,
+      plRankedKd,
+      plRankedDeaths,
+      plRankedKills,
+      plRankedMatches,
+      plRankedWins,
+      plRankedLosses,
+      plRankText,
+      plThisSeasonRankedMmr,
+      plThisSeasonRankedKd,
+      plProfilePic,
+      plRankPic,
+      plTotalPlayTime,
+      plTotalMatchesPlayed,
+      plTotalWins,
+      plTotalLosses,
+      plTotalKills,
+      plTotalDeaths,
+      plTotalKD,
+      plRankedPlayTime,
+      plCasualPlayTime,
+      plTotalKillAssists,
+      plTotalRevives,
+    },
+  ];
 }
